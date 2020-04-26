@@ -1,29 +1,35 @@
-import React, { Component } from 'react';
-import styled from 'styled-components'
+import React, { Component } from "react"
+import styled from "styled-components"
 
 class Tag extends Component {
   render() {
     const Tag = styled.div`
-      height: 39px;
-      width: 124px;
+      position: relative;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      height: 25px;
+      width: 100px;
       border-radius: 100px;
-      background-color: #D7DEFB;`
-    const TagText = styled.p`
-      height: 20px;
-      width: 124px;
-      color: #2661D4;
+      background-color: #d7defb;
+      margin: 0 10px 10px 0;
+    `
+    const TagText = styled.span`
+      display: inline-block;
+      color: #2661d4;
       font-family: Helvetica;
-      font-size: 22px;
-      font-weight: 700;
-      line-height: 22px;
-      text-align: center;`
+      font-size: 15px;
+      text-align: center;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    `
 
-    return ( 
+    return (
       <Tag>
         <TagText>{this.props.tag}</TagText>
       </Tag>
-     );
+    )
   }
 }
- 
-export default Tag;
+
+export default Tag

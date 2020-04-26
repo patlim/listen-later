@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route } from 'react-router-dom'
 import './App.css';
 
 import Header from './Header'
@@ -9,8 +10,10 @@ function App() {
   return (
     <>
       <Header />
-      <Nav />
-      <EntryList />
+      <div className="row">
+        <Route path="/" component={Nav} />
+        <EntryList />
+      </div>
     </>
   );
 }

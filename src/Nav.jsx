@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import styled from "styled-components"
 
-import Tag from "./Tag"
+import NavItem from "./NavItem"
 
 class Nav extends Component {
   state = {
@@ -15,28 +15,24 @@ class Nav extends Component {
   }
 
   render() {
-    const NavContainer = styled.nav`
+    const NavContainer = styled.ul`
       float: left;
+      max-width: 15%;
+      list-style: "none";
     `
-    const NavHeader = styled.div`
-      height: 31px;
-      width: 166px;
-      color: #000;
-      font-family: Helvetica;
-      font-size: 25px;
+    const NavHeader = styled.li`
       font-weight: 700;
-      line-height: 25px;
-      text-align: center;
+      padding: 15px;
+      border-bottom: .5px solid lightgrey;
     `
 
     return (
-      <NavContainer>
+      <NavContainer className="col">
         <NavHeader>Categories</NavHeader>
         {this.state.taglist.map((t) => (
-          <Tag key={t.id} tag={t.tag} />
+          <NavItem key={t.id} tag={t.tag} />
         ))}
-        <Tag tag="more" />
-        <Tag tag="+" />
+        <NavItem tag="more" style={{alignSelf: 'flex-end'}} />
       </NavContainer>
     )
   }
