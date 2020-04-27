@@ -5,8 +5,10 @@ export const REQ_ENTRIES = "REQ_ENTRIES"
 export const REC_ENTRIES = "REC_ENTRIES"
 
 export const ADD_CATEGORY = "ADD_CATEGORY"
-export const REQ_CATEGORY = "REQ_CATEGORY"
-export const REC_CATEGORY = "REC_CATEGORY"
+export const REQ_CATEGORIES = "REQ_CATEGORIES"
+export const REC_CATEGORIES = "REC_CATEGORIES"
+
+export const ADD_TAG = "ADD_TAG"
 
 export const requestEntries = () => {
   return {
@@ -21,21 +23,41 @@ export const receiveEntries = (category) => {
   }
 }
 
-export const receiveTags = () => {
-  console.log('test');
-  
+export const receiveCategories = () => {
   return {
-    type: REC_CATEGORY
+    type: REC_CATEGORIES
   }
 }
 
-export const addTagsToState = () => {
+export const addCategory = (Category) => {
+  return {
+    type: ADD_ENTRY,
+    category: Category
+  }
+}
+
+export const addTagToEntry = (newCategory, entryId) => {
+  return {
+    type: ADD_TAG,
+    entryId,
+    category: newCategory
+  }
+}
+
+export function addTagToEntryHandler(newCategory, entryId) {
+  return (dispatch) => {
+    dispatch(addCategory())
+    dispatch(addTagToEntry(newCategory, entryId))
+  }
+}
+
+export const getTagsToState = () => {
   return {
 
   }
 }
 
-export const addEntriesToState = (tagId) => {
+export const getEntriesToState = (tagId) => {
   return {
     
   }

@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import styled from "styled-components"
 import { connect } from "react-redux"
 
+import { addTagToEntryHandler } from './actions/index'
 import Tag from "./Tag"
 
 class Entry extends Component {
@@ -16,9 +17,10 @@ class Entry extends Component {
     })
   }
 
-  enterHandler = (evt) => {
-    if (evt.keyCode === 13) {
-      console.log("entered: ", this.state.newTag)
+  enterHandler = (e, entryId) => {
+    if (e.keyCode === 13) {
+      console.log("entered: ", this.state.newTag, entryId)
+      this.props.addTagToEntryHandler(this.state.newTag, entryId)
     }
     this.setState({ newTag: "" })
   }
@@ -123,7 +125,7 @@ class Entry extends Component {
               type="text"
               placeholder="add tag"
               onChange={this.changeHandler}
-              // onKeyUp={this.enterHandler}
+              onKeyUp={e => this.enterHandler(e, this.props.id)}
             />
           </TagContainer>
         </DateTags>
@@ -138,7 +140,9 @@ class Entry extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return {}
+  return {
+    addTagToEntry: (newTag) => dispatch(addTagToEntryHandler(newTag))
+  }
 }
 
 export default connect(undefined, mapDispatchToProps)(Entry)

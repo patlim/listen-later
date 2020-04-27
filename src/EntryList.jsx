@@ -91,6 +91,7 @@ class EntryList extends Component {
           {this.state.entryArr.map((entry) => (
             <EntryRow key={entry.id}>
               <Entry
+                id={entry.id}
                 img={entry.img}
                 name={entry.name}
                 artist={entry.artist}
