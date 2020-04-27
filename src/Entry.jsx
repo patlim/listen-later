@@ -9,7 +9,12 @@ class Entry extends Component {
     newTag: "",
   }
 
-  changeHandler = (evt) => this.setState({ newTag: evt.target.value })
+  changeHandler = (evt) => {
+    console.log(evt.target.value);
+    this.setState({
+      newTag: evt.target.value,
+    })
+  }
 
   enterHandler = (evt) => {
     if (evt.keyCode === 13) {
@@ -48,10 +53,6 @@ class Entry extends Component {
     const Artist = styled.p`
       font-size: 15px;
       margin-bottom: 0px;
-    `
-    const Length = styled.p`
-      font-size: 15px;
-      margin-bottom: 0;
     `
     const Source = styled.p`
       font-size: 15px;
@@ -107,7 +108,6 @@ class Entry extends Component {
           <DetailInfo>
             <Name>{this.props.name}</Name>
             <Artist>{this.props.artist}</Artist>
-            <Length>{this.props.length}</Length>
             <Source>Source: {this.props.source}</Source>
           </DetailInfo>
         </Details>
@@ -123,7 +123,7 @@ class Entry extends Component {
               type="text"
               placeholder="add tag"
               onChange={this.changeHandler}
-              onKeyUp={this.enterHandler}
+              // onKeyUp={this.enterHandler}
             />
           </TagContainer>
         </DateTags>
