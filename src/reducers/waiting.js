@@ -1,13 +1,11 @@
 import * as actions from '../actions/index'
 
-const initialState = true
-
-const waitingReducer = (state = initialState, action) => {
+const waitingReducer = (state = false, action) => {
   switch (actions.type){
     case actions.REQ_CATEGORY:
-      return false
-    case actions.REC_CATEGORY:
       return true
+    case actions.REC_CATEGORY:
+      return false
     default:
       return state
   }

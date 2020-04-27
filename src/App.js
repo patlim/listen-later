@@ -5,11 +5,12 @@ import './App.css';
 import Header from './Header'
 import Nav from './Nav'
 import EntryList from './EntryList';
-
 function App() {
   return (
     <>
-      <Header />
+      <div className="row">
+        <Header />
+      </div>
       <div className="row">
         <Route path="/" component={Nav} />
         <EntryList />

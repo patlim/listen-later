@@ -4,7 +4,7 @@ const initialState = []
 
 const entryReducer = (state = initialState, action) => {
   switch (action.type){
-    case actions.REC_ENTRY:
+    case actions.REC_ENTRIES:
       return state.filter(entry => entry.categories.includes(action.category))
     case actions.ADD_ENTRY:
       return [...state, action.entry]

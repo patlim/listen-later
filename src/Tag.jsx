@@ -9,7 +9,7 @@ class Tag extends Component {
       align-items: center;
       text-align: center;
       height: 25px;
-      width: 100px;
+      min-width: 100px;
       border-radius: 100px;
       background-color: #d7defb;
       margin: 0 10px 10px 0;

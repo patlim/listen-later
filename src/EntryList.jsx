@@ -15,11 +15,8 @@ class EntryList extends Component {
         length: "4:50",
         source: "Youtube",
         date: "25th April 2020",
-        taglist: [
-          { id: 1, tag: "#house" },
-          { id: 2, tag: "#jazz" },
-          { id: 3, tag: "#rnb" },
-        ],
+        categories: ["#electronic","#jazz","#rnb","#rock","#experimental","#test"],
+        link: "/"
       },
       {
         id: 2,
@@ -30,11 +27,8 @@ class EntryList extends Component {
         length: "6:26",
         source: "Soundcloud",
         date: "24th April 2020",
-        taglist: [
-          { id: 1, tag: "#house" },
-          { id: 2, tag: "#hello" },
-          { id: 3, tag: "#tag" },
-        ],
+        categories: ["#house", "#hello", "#tag"],
+        link: "/"
       },
       {
         id: 3,
@@ -45,39 +39,32 @@ class EntryList extends Component {
         length: "6:26",
         source: "Bandcamp",
         date: "24th April 2020",
-        taglist: [
-          { id: 1, tag: "#etc" },
-          { id: 2, tag: "#thing" },
-        ],
+        categories: ["#etc","#thing"],
+        link: "/"
       },
       {
         id: 4,
         name: "track4",
         artist: "Artist4",
         img:
-          "http://placeimg.com/310/310/any",
+          "https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
         length: "1:34",
         source: "Youtube",
         date: "22th April 2020",
-        taglist: [
-          { id: 1, tag: "#other" },
-          { id: 2, tag: "#thing" },
-        ],
+        categories: ["#other","#thing"],
+        link: "/"
       },
       {
         id: 5,
         name: "track5",
         artist: "Artist5",
         img:
-          "https://placebear.com/300/300",
+          "https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=355&q=80",
         length: "3:56",
         source: "Bandcamp",
         date: "2nd April 2020",
-        taglist: [
-          { id: 1, tag: "#etc" },
-          { id: 2, tag: "#thing" },
-          { id: 3, tag: "#genre" },
-        ],
+        categories: ["#etc", "#thing", "#genre"],
+        link: "/"
       },
     ],
   }
@@ -114,7 +101,8 @@ class EntryList extends Component {
                 length={entry.length}
                 source={entry.source}
                 date={entry.date}
-                tags={entry.taglist}
+                categories={entry.categories}
+                linke={entry.link}
               />
             </EntryRow>
           ))}
