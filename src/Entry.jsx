@@ -10,19 +10,24 @@ class Entry extends Component {
     newTag: "",
   }
 
-  changeHandler = (evt) => {
-    console.log(evt.target.value);
-    this.setState({
-      newTag: evt.target.value,
-    })
-  }
+  // changeHandler = (evt) => {
+  //   console.log(evt.target.value);
+  //   // this.setState({
+  //   //   newTag: evt.target.value,
+  //   // })
+  // }
+
+  // onSubmit = (e, entryId) => {
+  //   console.log("entered: ", this.state.newTag, {entryId})
+  //   this.setState({ newTag: "" })
+  // }
 
   enterHandler = (e, entryId) => {
+    console.log("entered: ", e.currentTarget.value, {entryId})
     if (e.keyCode === 13) {
-      console.log("entered: ", this.state.newTag, entryId)
-      this.props.addTagToEntryHandler(this.state.newTag, entryId)
+      // this.props.addTagToEntryHandler(e.currentTarget.value, entryId)
+      e.currentTarget.value = ''
     }
-    this.setState({ newTag: "" })
   }
 
   render() {
@@ -121,12 +126,16 @@ class Entry extends Component {
             {this.props.categories.map((tag) => (
               <Tag tag={tag} />
             ))}
-            <InputTag
-              type="text"
-              placeholder="add tag"
-              onChange={this.changeHandler}
-              onKeyUp={e => this.enterHandler(e, this.props.id)}
-            />
+            {/* <form onSubmit={(e) => this.onSubmit(e, this.props.id)}> */}
+              <InputTag
+                type="text"
+                placeholder="add tag"
+                // value={this.state.newTag}
+                // onChange={this.changeHandler}
+                onKeyUp={e => this.enterHandler(e, this.props.id)}
+              />
+              {/* <input type='submit' hidden/>
+            </form> */}
           </TagContainer>
         </DateTags>
         <IconContainer>

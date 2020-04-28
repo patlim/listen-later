@@ -25,9 +25,9 @@ class Nav extends Component {
     return (
       <NavContainer className="col">
         <NavHeader>Categories</NavHeader>
-        {this.props.taglist.map((t) => (
+        {/* {this.props.taglist.map((t) => (
           <NavItem key={t.id} tag={t.tag} />
-        ))}
+        ))} */}
         <NavItem tag="more" style={{alignSelf: 'flex-end'}} />
       </NavContainer>
     )
