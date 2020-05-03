@@ -2,14 +2,20 @@
   "name": "listen-later",
   "version": "0.1.0",
   "private": true,
-  "hompage": "https://patlim.github.io/listen-later/",
+  "hompage": "http://patlim.github.io/listen-later",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.13.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
     "bootstrap": "^4.4.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
     "gh-pages": "^2.2.0",
+    "mongoose": "^5.9.11",
+    "morgan": "^1.10.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
@@ -22,13 +28,14 @@
     "superagent": "^5.2.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently \"cd backend && node server.js\" \"cd client && npm start\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
+  "proxy": "http://localhost:3001",
   "eslintConfig": {
     "extends": "react-app"
   },
