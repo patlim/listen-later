@@ -4,4 +4,4 @@ This is a work in progress, will ideally be a chrome extension
 
 Using React and Redux
 
-Check it out [here](listen-later-project.herokuapp.com)
+Check it out [here](https://listen-later-project.herokuapp.com)
