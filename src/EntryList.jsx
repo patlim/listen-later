@@ -54,7 +54,6 @@ class EntryList extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state.entries)
   return {
     entryList: state.entries
   }

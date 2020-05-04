@@ -61,6 +61,7 @@ const initialState = [
 const entryReducer = (state = initialState, action) => {
   switch (action.type){
     case actions.REC_ENTRIES:
+      console.log(action.category)
       return state.filter(entry => entry.categories.includes(action.category))
     case actions.ADD_ENTRY:
       console.log(action.entry)

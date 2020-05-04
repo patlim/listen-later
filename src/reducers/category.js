@@ -1,11 +1,12 @@
 import * as actions from "../actions/category"
 
 const initialState = [
-  { id: 1, tag: "#house" },
+  { id: 1, tag: "#latest" },
   { id: 2, tag: "#jazz" },
   { id: 3, tag: "#rnb" },
   { id: 4, tag: "#hiphop" },
   { id: 5, tag: "#soul" },
+  { id: 6, tag: "#house" },
 ]
 
 const categoryReducer = (state = initialState, action) => {
