@@ -1,7 +1,7 @@
 export const ADD_ENTRY = "ADD_ENTRY"
 export const REQ_ENTRIES = "REQ_ENTRIES"
 export const REC_ENTRIES = "REC_ENTRIES"
-export const ADD_CATEGORY = "ADD_CATEGORY"
+export const ADD_ENTRY_CATEGORY = "ADD_ENTRY_CATEGORY"
 
 export const requestEntries = () => {
   return {
@@ -18,9 +18,9 @@ export const receiveEntries = (category) => {
 
 export const addCategoryToEntry = (category, entryId) => {
   return {
-    type: ADD_CATEGORY,
+    type: ADD_ENTRY_CATEGORY,
     entryId,
-    category
+    category: '#' + category
   }
 }
 

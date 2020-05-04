@@ -10,22 +10,9 @@ class Entry extends Component {
     newTag: "",
   }
 
-  // changeHandler = (evt) => {
-  //   console.log(evt.target.value);
-  //   // this.setState({
-  //   //   newTag: evt.target.value,
-  //   // })
-  // }
-
-  // onSubmit = (e, entryId) => {
-  //   console.log("entered: ", this.state.newTag, {entryId})
-  //   this.setState({ newTag: "" })
-  // }
-
   enterHandler = (e, entryId) => {
-    console.log("entered: ", e.currentTarget.value, {entryId})
     if (e.keyCode === 13) {
-      // this.props.addTagToEntryHandler(e.currentTarget.value, entryId)
+      this.props.dispatch(addCategoryToEntry(e.currentTarget.value, Number(entryId)))
       e.currentTarget.value = ''
     }
   }
@@ -126,16 +113,11 @@ class Entry extends Component {
             {this.props.categories.map((tag) => (
               <Tag tag={tag} />
             ))}
-            {/* <form onSubmit={(e) => this.onSubmit(e, this.props.id)}> */}
               <InputTag
                 type="text"
                 placeholder="add tag"
-                // value={this.state.newTag}
-                // onChange={this.changeHandler}
                 onKeyUp={e => this.enterHandler(e, this.props.id)}
               />
-              {/* <input type='submit' hidden/>
-            </form> */}
           </TagContainer>
         </DateTags>
         <IconContainer>
@@ -148,10 +130,4 @@ class Entry extends Component {
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    addCategoryToEntry: newTag => dispatch(addCategoryToEntry(newTag))
-  }
-}
-
-export default connect(undefined, mapDispatchToProps)(Entry)
+export default connect()(Entry)
