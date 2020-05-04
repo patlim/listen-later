@@ -2,13 +2,12 @@ import React, { Component } from "react"
 import { connect } from 'react-redux'
 import styled from "styled-components"
 
-import { receiveCategories } from "./actions/index"
+import { getCategories } from "./actions/category"
 import NavItem from "./NavItem"
 
 class Nav extends Component {
-  constructor (props) {
-    super(props)
-    this.props.dispatch(receiveCategories())
+  componentDidMount() {
+    this.props.dispatch(getCategories())
   }
 
   render() {
@@ -25,10 +24,9 @@ class Nav extends Component {
     return (
       <NavContainer className="col">
         <NavHeader>Categories</NavHeader>
-        {/* {this.props.taglist.map((t) => (
+        {this.props.taglist.map((t) => (
           <NavItem key={t.id} tag={t.tag} />
-        ))} */}
-        <NavItem tag="more" style={{alignSelf: 'flex-end'}} />
+        ))}
       </NavContainer>
     )
   }

@@ -1,4 +1,4 @@
-import * as actions from "../actions/index"
+import * as actions from "../actions/category"
 
 const initialState = [
   { id: 1, tag: "#house" },

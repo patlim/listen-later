@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import styled from "styled-components"
 import { connect } from "react-redux"
 
-import { addTagToEntryHandler } from './actions/index'
+import { addCategoryToEntry } from './actions/entry'
 import Tag from "./Tag"
 
 class Entry extends Component {
@@ -150,7 +150,7 @@ class Entry extends Component {
 
 function mapDispatchToProps(dispatch) {
   return {
-    addTagToEntry: (newTag) => dispatch(addTagToEntryHandler(newTag))
+    addCategoryToEntry: newTag => dispatch(addCategoryToEntry(newTag))
   }
 }
 
