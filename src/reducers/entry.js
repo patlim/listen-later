@@ -8,7 +8,7 @@ const initialState = [
     img:
       "https://upload.wikimedia.org/wikipedia/en/thumb/9/9c/Darkside_Psychic_Cover.jpg/220px-Darkside_Psychic_Cover.jpg",
     source: "Youtube",
-    date: "25th April 2020",
+    date: "25/04/20",
     categories: ["#electronic","#jazz","#rnb","#rock","#experimental","#latest"],
     link: "/"
   },
@@ -19,7 +19,7 @@ const initialState = [
     img:
       "https://media.pitchfork.com/photos/5b8ff8112139ed4e0509acdd/1:1/w_500/Local%20Artist%20_%20Mood%20Hut%20_%20Dancer%20cover.jpg",
     source: "Soundcloud",
-    date: "24th April 2020",
+    date: "24/04/20",
     categories: ["#house", "#hello", "#latest"],
     link: "/"
   },
@@ -30,7 +30,7 @@ const initialState = [
     img:
       "https://cdn.shopify.com/s/files/1/0306/7317/4665/products/li1_5b42afa0-260c-4fd1-8099-c7148a2e64ee_300x300.jpg?v=1581424806",
     source: "Bandcamp",
-    date: "24th April 2020",
+    date: "24/04/20",
     categories: ["#etc","#latest"],
     link: "/"
   },
@@ -41,7 +41,7 @@ const initialState = [
     img:
       "https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
     source: "Youtube",
-    date: "22th April 2020",
+    date: "22/04/20",
     categories: ["#other","#latest"],
     link: "/"
   },
@@ -52,7 +52,7 @@ const initialState = [
     img:
       "https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=355&q=80",
     source: "Bandcamp",
-    date: "2nd April 2020",
+    date: "02/05/20",
     categories: ["#etc", "#latest", "#genre"],
     link: "/"
   },
@@ -63,7 +63,8 @@ const entryReducer = (state = initialState, action) => {
     case actions.REC_ENTRIES:
       return state.filter(entry => entry.categories.includes(action.category))
     case actions.ADD_ENTRY:
-      return [...state, action.entry]
+      console.log(action.entry)
+      return [...state, {...action.entry, id: state.length}]
     case actions.ADD_ENTRY_CATEGORY:
       return state.map(entry => {
         return entry.id === action.entryId
