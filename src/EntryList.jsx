@@ -1,94 +1,39 @@
 import React, { Component } from "react"
+import { connect } from "react-redux"
 import styled from "styled-components"
 
+import { getEntries } from "./actions/entry"
 import Entry from "./Entry"
 
+const EntryListContainer = styled.table`
+  float: right;
+  width: 80%;
+  overflow-y: scroll;
+`
+const EntryListHeader = styled.th`
+  border-bottom: 0.5px solid lightgray;
+  padding: 15px;
+  text-align: "left";
+`
+const EntryRow = styled.tr`
+  height: 100px;
+`
+
 class EntryList extends Component {
-  state = {
-    entryArr: [
-      {
-        id: 1,
-        name: "Paper Trails",
-        artist: "Darkside",
-        img:
-          "https://upload.wikimedia.org/wikipedia/en/thumb/9/9c/Darkside_Psychic_Cover.jpg/220px-Darkside_Psychic_Cover.jpg",
-        source: "Youtube",
-        date: "25th April 2020",
-        categories: ["#electronic","#jazz","#rnb","#rock","#experimental","#test"],
-        link: "/"
-      },
-      {
-        id: 2,
-        name: "Dancer",
-        artist: "Local Artist",
-        img:
-          "https://media.pitchfork.com/photos/5b8ff8112139ed4e0509acdd/1:1/w_500/Local%20Artist%20_%20Mood%20Hut%20_%20Dancer%20cover.jpg",
-        source: "Soundcloud",
-        date: "24th April 2020",
-        categories: ["#house", "#hello", "#tag"],
-        link: "/"
-      },
-      {
-        id: 3,
-        name: "Teuf De Ouf",
-        artist: "Scruscru & Jehan",
-        img:
-          "https://cdn.shopify.com/s/files/1/0306/7317/4665/products/li1_5b42afa0-260c-4fd1-8099-c7148a2e64ee_300x300.jpg?v=1581424806",
-        source: "Bandcamp",
-        date: "24th April 2020",
-        categories: ["#etc","#thing"],
-        link: "/"
-      },
-      {
-        id: 4,
-        name: "track4",
-        artist: "Artist4",
-        img:
-          "https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
-        source: "Youtube",
-        date: "22th April 2020",
-        categories: ["#other","#thing"],
-        link: "/"
-      },
-      {
-        id: 5,
-        name: "track5",
-        artist: "Artist5",
-        img:
-          "https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=355&q=80",
-        source: "Bandcamp",
-        date: "2nd April 2020",
-        categories: ["#etc", "#thing", "#genre"],
-        link: "/"
-      },
-    ],
+  componentDidMount() {
+    this.props.dispatch(getEntries("#latest"))
   }
-
   render() {
-    const EntryListContainer = styled.table`
-      float: right;
-      width: 80%;
-      overflow-y: scroll;
-    `
-    const EntryListHeader = styled.th`
-      border-bottom: .5px solid lightgray;
-      padding: 15px;
-      text-align:"left";
-    `
-    const EntryRow = styled.tr`
-      height: 100px;
-    `
-
     return (
       <EntryListContainer className="col">
         <thead>
           <tr>
-            <EntryListHeader >#latest</EntryListHeader>
-            <EntryListHeader >Date Added</EntryListHeader>
+            <EntryListHeader>#latest</EntryListHeader>
+            <EntryListHeader>Date Added</EntryListHeader>
           </tr>
         </thead>
         <tbody>
-          {this.state.entryArr.map((entry) => (
+          {this.props.entryList.map((entry) => (
             <EntryRow key={entry.id}>
               <Entry
                 id={entry.id}
@@ -108,4 +53,10 @@ class EntryList extends Component {
   }
 }
 
-export default EntryList
+const mapStateToProps = (state) => {
+  return {
+    entryList: state.entries,
+  }
+}
+
+export default connect(mapStateToProps)(EntryList)

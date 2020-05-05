@@ -2,112 +2,100 @@ import React, { Component } from "react"
 import styled from "styled-components"
 import { connect } from "react-redux"
 
-import { addTagToEntryHandler } from './actions/index'
+import { addCategoryToEntry } from "./actions/entry"
 import Tag from "./Tag"
+
+const Details = styled.td`
+  width: 30%;
+  border-bottom: 0.5px solid lightgray;
+  padding: 15px;
+  height: 100%;
+`
+const DateTags = styled.td`
+  width: 60%;
+  border-bottom: 0.5px solid lightgray;
+  padding: 15px;
+  height: 100%;
+`
+const Art = styled.img`
+  width: 100px;
+  float: left;
+  height: auto;
+`
+const DetailInfo = styled.div`
+  overflow: hidden;
+  padding-left: 15px;
+`
+const Name = styled.p`
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 0px;
+`
+const Artist = styled.p`
+  font-size: 15px;
+  margin-bottom: 0px;
+`
+const Source = styled.p`
+  font-size: 15px;
+  color: grey;
+  margin: 0;
+`
+const Date = styled.p`
+  font-size: 15px;
+`
+const DateContainer = styled.div`
+  height: 40%;
+  display: flex;
+  flex-direction: row;
+`
+const TagContainer = styled.div`
+  height: 60%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+`
+const InputTag = styled.input`
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 25px;
+  width: 100px;
+  border-radius: 100px;
+  background-color: lightgrey;
+  margin: 0 10px 10px 0;
+  border: 0;
+  font-size: 15px;
+`
+const IconLink = styled.a`
+  border-bottom: 2px solid white;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  padding: 0 5px 0 5px;
+`
+const IconContainer = styled.div`
+  display: table;
+  width: 10%;
+  height: 100%;
+  background-color: #d7defb;
+`
 
 class Entry extends Component {
   state = {
     newTag: "",
   }
 
-  // changeHandler = (evt) => {
-  //   console.log(evt.target.value);
-  //   // this.setState({
-  //   //   newTag: evt.target.value,
-  //   // })
-  // }
-
-  // onSubmit = (e, entryId) => {
-  //   console.log("entered: ", this.state.newTag, {entryId})
-  //   this.setState({ newTag: "" })
-  // }
-
   enterHandler = (e, entryId) => {
-    console.log("entered: ", e.currentTarget.value, {entryId})
     if (e.keyCode === 13) {
-      // this.props.addTagToEntryHandler(e.currentTarget.value, entryId)
-      e.currentTarget.value = ''
+      this.props.dispatch(
+        addCategoryToEntry(e.currentTarget.value, Number(entryId))
+      )
+      e.currentTarget.value = ""
     }
   }
 
   render() {
-    const Details = styled.td`
-      width: 30%;
-      border-bottom: 0.5px solid lightgray;
-      padding: 15px;
-      height: 100%;
-    `
-    const DateTags = styled.td`
-      width: 60%;
-      border-bottom: 0.5px solid lightgray;
-      padding: 15px;
-      height: 100%;
-    `
-    const Art = styled.img`
-      width: 100px;
-      float: left;
-      height: auto;
-    `
-    const DetailInfo = styled.div`
-      overflow: hidden;
-      padding-left: 15px;
-    `
-    const Name = styled.p`
-      font-size: 15px;
-      font-weight: 700;
-      margin-bottom: 0px;
-    `
-    const Artist = styled.p`
-      font-size: 15px;
-      margin-bottom: 0px;
-    `
-    const Source = styled.p`
-      font-size: 15px;
-      color: grey;
-      margin: 0;
-    `
-    const Date = styled.p`
-      font-size: 15px;
-    `
-    const DateContainer = styled.div`
-      height: 40%;
-      display: flex;
-      flex-direction: row;
-    `
-    const TagContainer = styled.div`
-      height: 60%;
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-    `
-    const InputTag = styled.input`
-      position: relative;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      height: 25px;
-      width: 100px;
-      border-radius: 100px;
-      background-color: lightgrey;
-      margin: 0 10px 10px 0;
-      border: 0;
-      font-size: 15px;
-    `
-    const IconLink = styled.a`
-      border-bottom: 2px solid white;
-      display: table-cell;
-      vertical-align: middle;
-      text-align: center;
-      padding: 0 5px 0 5px;
-
-    `
-    const IconContainer = styled.div`
-    display: table;
-    width: 10%;
-    height: 100%;
-    background-color: #d7defb;
-    `
-
     return (
       <>
         <Details>
@@ -124,18 +112,13 @@ class Entry extends Component {
           </DateContainer>
           <TagContainer>
             {this.props.categories.map((tag) => (
-              <Tag tag={tag} />
+              <Tag key={tag.id} tag={tag} />
             ))}
-            {/* <form onSubmit={(e) => this.onSubmit(e, this.props.id)}> */}
-              <InputTag
-                type="text"
-                placeholder="add tag"
-                // value={this.state.newTag}
-                // onChange={this.changeHandler}
-                onKeyUp={e => this.enterHandler(e, this.props.id)}
-              />
-              {/* <input type='submit' hidden/>
-            </form> */}
+            <InputTag
+              type="text"
+              placeholder="add tag"
+              onKeyUp={(e) => this.enterHandler(e, this.props.id)}
+            />
           </TagContainer>
         </DateTags>
         <IconContainer>
@@ -148,10 +131,4 @@ class Entry extends Component {
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    addTagToEntry: (newTag) => dispatch(addTagToEntryHandler(newTag))
-  }
-}
-
-export default connect(undefined, mapDispatchToProps)(Entry)
+export default connect()(Entry)

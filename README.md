@@ -2,4 +2,12 @@
 ## A place you can save music links and listen later
 This is a work in progress, will ideally be a chrome extension
 
+<<<<<<< HEAD
 Using React, Redux, MongoDB and axios
+||||||| merged common ancestors
+Using React and Redux
+=======
+Using React and Redux
+
+Check it out [here](https://listen-later-project.herokuapp.com)
+>>>>>>> origin/master

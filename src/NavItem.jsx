@@ -1,15 +1,23 @@
 import React from 'react';
+import { connect } from 'react-redux'
 import styled from 'styled-components'
 
-const NavItem = (props) => {
-  const NavItem = styled.li`
+import { getEntries } from './actions/entry'
+ 
+const NavListItem = styled.li`
   padding: 15px;
   `
+  
+const NavItem = (props) => {
+  const navHandler = () => {
+    props.dispatch(getEntries(props.tag))
+  }
+
   return ( 
     <>
-      <NavItem>{props.tag}</NavItem>
+      <NavListItem onClick = { navHandler }>{props.tag}</NavListItem>
     </>
    );
 }
  
-export default NavItem;
+export default connect()(NavItem)
