@@ -40,17 +40,17 @@ const getDate = () => {
   return dd + '/' + mm + '/' + yy;
 }
 
-export const addEntry = ({ category, link }) => {
+export const addEntry = ({ link, category, artist, name }) => {
   return {
     type: ADD_ENTRY,
     entry: {
-      name: "work in progress",
-      artist: "work in progress",
+      name: name,
+      artist: artist,
       img:
         "https://redi.eu/wp-content/uploads/2015/08/not-available-300x217.png",
       source: "work in progress",
       date: getDate(),
-      categories: [category],
+      categories: ['#'+ category],
       link: link
     }
   }

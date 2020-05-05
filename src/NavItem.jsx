@@ -4,18 +4,18 @@ import styled from 'styled-components'
 
 import { getEntries } from './actions/entry'
  
-const NavItem = (props) => {
-  const NavItem = styled.li`
+const NavListItem = styled.li`
   padding: 15px;
   `
   
+const NavItem = (props) => {
   const navHandler = () => {
     props.dispatch(getEntries(props.tag))
   }
 
   return ( 
     <>
-      <NavItem onClick = { navHandler }>{props.tag}</NavItem>
+      <NavListItem onClick = { navHandler }>{props.tag}</NavListItem>
     </>
    );
 }

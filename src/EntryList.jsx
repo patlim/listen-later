@@ -1,35 +1,35 @@
 import React, { Component } from "react"
-import { connect } from 'react-redux'
+import { connect } from "react-redux"
 import styled from "styled-components"
 
-import { getEntries } from './actions/entry'
+import { getEntries } from "./actions/entry"
 import Entry from "./Entry"
+
+const EntryListContainer = styled.table`
+  float: right;
+  width: 80%;
+  overflow-y: scroll;
+`
+const EntryListHeader = styled.th`
+  border-bottom: 0.5px solid lightgray;
+  padding: 15px;
+  text-align: "left";
+`
+const EntryRow = styled.tr`
+  height: 100px;
+`
 
 class EntryList extends Component {
   componentDidMount() {
-    this.props.dispatch(getEntries('#latest'))
+    this.props.dispatch(getEntries("#latest"))
   }
   render() {
-    const EntryListContainer = styled.table`
-      float: right;
-      width: 80%;
-      overflow-y: scroll;
-    `
-    const EntryListHeader = styled.th`
-      border-bottom: .5px solid lightgray;
-      padding: 15px;
-      text-align:"left";
-    `
-    const EntryRow = styled.tr`
-      height: 100px;
-    `
-
     return (
       <EntryListContainer className="col">
         <thead>
           <tr>
-            <EntryListHeader >#latest</EntryListHeader>
-            <EntryListHeader >Date Added</EntryListHeader>
+            <EntryListHeader>#latest</EntryListHeader>
+            <EntryListHeader>Date Added</EntryListHeader>
           </tr>
         </thead>
         <tbody>
@@ -55,7 +55,7 @@ class EntryList extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    entryList: state.entries
+    entryList: state.entries,
   }
 }
 
