@@ -28,25 +28,28 @@ class EntryList extends Component {
       <EntryListContainer className="col">
         <thead>
           <tr>
-            <EntryListHeader>#latest</EntryListHeader>
+            <EntryListHeader>{this.props.selectedCategory}</EntryListHeader>
             <EntryListHeader>Date Added</EntryListHeader>
           </tr>
         </thead>
         <tbody>
-          {this.props.entryList.map((entry) => (
-            <EntryRow key={entry.id}>
-              <Entry
-                id={entry.id}
-                img={entry.img}
-                name={entry.name}
-                artist={entry.artist}
-                source={entry.source}
-                date={entry.date}
-                categories={entry.categories}
-                linke={entry.link}
-              />
-            </EntryRow>
-          ))}
+          { (this.props.entryList.length === 0)
+            ? <tr>No entries in this category</tr>
+            : this.props.entryList.map((entry) => (
+              <EntryRow key={entry.id}>
+                <Entry
+                  id={entry.id}
+                  img={entry.img}
+                  name={entry.name}
+                  artist={entry.artist}
+                  source={entry.source}
+                  date={entry.date}
+                  categories={entry.categories}
+                  linke={entry.link}
+                />
+              </EntryRow>
+            ))
+          }
         </tbody>
       </EntryListContainer>
     )
@@ -55,7 +58,8 @@ class EntryList extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    entryList: state.entries,
+    entryList: state.entries.filter(entry => entry.categories.includes(state.categories.selectedCategory)),
+    selectedCategory: state.categories.selectedCategory
   }
 }
 

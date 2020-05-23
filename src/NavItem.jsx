@@ -1,23 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import styled from 'styled-components'
+import { ListGroup } from "react-bootstrap"
 
-import { getEntries } from './actions/entry'
- 
-const NavListItem = styled.li`
-  padding: 15px;
-  `
-  
+import { selectCategory } from './actions/category'
+
 const NavItem = (props) => {
   const navHandler = () => {
-    props.dispatch(getEntries(props.tag))
+    props.dispatch(selectCategory(props.tag))
   }
 
-  return ( 
-    <>
-      <NavListItem onClick = { navHandler }>{props.tag}</NavListItem>
-    </>
-   );
+  if (props.selectedCategory === props.tag) {
+    return <ListGroup.Item variant="primary" onClick = { navHandler }>{props.tag}</ListGroup.Item>
+  } else {
+    return <ListGroup.Item onClick = { navHandler }>{props.tag}</ListGroup.Item>
+  }
 }
- 
-export default connect()(NavItem)
+
+const mapStateToProps = state => ({ selectedCategory: state.categories.selectedCategory})
+
+export default connect(mapStateToProps)(NavItem)
