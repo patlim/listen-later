@@ -20,14 +20,12 @@ class Nav extends Component {
 
   render() {
     return (
-      <>
       <ListGroup style={{ maxWidth: '15%' }} variant="flush" className="col">
-      <NavHeader>Categories</NavHeader>
-        {this.props.taglist.map((t) => (
-          <NavItem key={t.id} tag={t.tag} />
-        ))}
+        <NavHeader>Categories</NavHeader>
+          {this.props.taglist.map((t) => (
+            <NavItem key={t.id} tag={t.tag} />
+          ))}
       </ListGroup>
-      </>
     )
   }
 }

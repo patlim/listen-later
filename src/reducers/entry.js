@@ -63,8 +63,9 @@ const entryReducer = (state = initialState, action) => {
     case actions.REC_ENTRIES:
       return state.filter(entry => entry.categories.includes(action.category))
     case actions.ADD_ENTRY:
-      console.log({id: state.length + 1, ...action.entry})
-      return [...state, {...action.entry, id: state.length + 1}]
+      state.push({ id: state.length + 1, ...action.entry })
+      const newstate = state
+      return newstate
     case actions.ADD_ENTRY_CATEGORY:
       return state.map(entry => {
         return entry.id === action.entryId

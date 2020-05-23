@@ -11,7 +11,7 @@ function App() {
       <div className="row">
         <Header />
       </div>
-      <div className="row">
+      <div style={{ margin: '1em' }} className="row">
         <Route path="/" component={Nav} />
         <EntryList />
       </div>
