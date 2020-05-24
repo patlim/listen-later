@@ -61,7 +61,7 @@ const initialState = [
 const entryReducer = (state = initialState, action) => {
   switch (action.type){
     case actions.REC_ENTRIES:
-      return state.filter(entry => entry.categories.includes(action.category))
+      return state
     case actions.ADD_ENTRY:
       state.push({ id: state.length + 1, ...action.entry })
       const newstate = state

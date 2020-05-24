@@ -49,7 +49,7 @@ const Input = styled.input`
   font-size: 15px;
   margin: 10px 0 0 10px;
 `
-const Submit = styled.button`
+const Submit = styled.input`
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -65,10 +65,12 @@ const Submit = styled.button`
 class Header extends React.Component {
   state = {
     link: "",
-    category: "",
+    name: "",
+    artist: "",
+    category: ""
   }
 
-  handleInputChange = (evt) => {
+  handleInputChange = evt => {
     const target = evt.target
     const value = target.value
     const name = target.name
@@ -77,11 +79,14 @@ class Header extends React.Component {
     })
   }
 
-  submitHandler = () => {
+  submitHandler = e => {
     this.props.dispatch(addEntry(this.state))
+    e.preventDefault()
     this.setState({
-      link: '',
-      category: ''
+      link: "",
+      name: "",
+      artist: "",
+      category: ""
     })
   }
   render() {
@@ -90,7 +95,7 @@ class Header extends React.Component {
         <HeaderWrapper>
           <TitleHeader>LISTEN LATER</TitleHeader>
         </HeaderWrapper>
-        <Form>
+        <Form onSubmit={this.submitHandler}>
           <div>
             <InputLink
               type="text"
@@ -119,7 +124,7 @@ class Header extends React.Component {
               onKeyUp={this.handleInputChange}
               required
             />
-            <Submit onClick={this.submitHandler}>Submit</Submit>
+            <Submit type="submit" value="Submit" />
           </div>
         </Form>
       </>
