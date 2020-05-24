@@ -21,10 +21,17 @@ const EntryRow = styled.tr`
 
 class EntryList extends Component {
   componentDidMount() {
-    this.props.dispatch(getEntries("#latest"))
+    this.props.dispatch(getEntries())
   }
+
   render() {
-    return (
+    let filteredEntryList = []
+    if (this.props.selectedCategory === "#all") {
+      filteredEntryList = this.props.entryList
+    } else {
+      filteredEntryList = this.props.entryList.filter(entry => entry.categories.includes(this.props.selectedCategory))
+    }
+      return (
       <EntryListContainer className="col">
         <thead>
           <tr>
@@ -33,9 +40,9 @@ class EntryList extends Component {
           </tr>
         </thead>
         <tbody>
-          { (this.props.entryList.length === 0)
+          { (filteredEntryList.length === 0)
             ? <tr>No entries in this category</tr>
-            : this.props.entryList.map((entry) => (
+            : filteredEntryList.map((entry) => (
               <EntryRow key={entry.id}>
                 <Entry
                   id={entry.id}
@@ -56,9 +63,9 @@ class EntryList extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
-    entryList: state.entries.filter(entry => entry.categories.includes(state.categories.selectedCategory)),
+    entryList: state.entries,
     selectedCategory: state.categories.selectedCategory
   }
 }

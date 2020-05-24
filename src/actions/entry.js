@@ -10,10 +10,9 @@ export const requestEntries = () => {
   }
 }
 
-export const receiveEntries = (category) => {
+export const receiveEntries = () => {
   return {
-    type: REC_ENTRIES,
-    category
+    type: REC_ENTRIES
   }
 }
 
@@ -55,9 +54,9 @@ export const addEntry = ({ link, category, artist, name }) => {
   }
 }
 
-export function getEntries(category) {
+export function getEntries() {
   return dispatch => {
     dispatch(requestEntries())
-    dispatch(receiveEntries(category))
+    dispatch(receiveEntries())
   }
 }

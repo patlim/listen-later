@@ -49,7 +49,7 @@ const Input = styled.input`
   font-size: 15px;
   margin: 10px 0 0 10px;
 `
-const Submit = styled.input`
+const Submit = styled.button`
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -71,23 +71,22 @@ class Header extends React.Component {
   }
 
   handleInputChange = evt => {
-    const target = evt.target
-    const value = target.value
-    const name = target.name
+    const value = evt.target.value;
     this.setState({
-      [name]: value,
-    })
+      ...this.state,
+      [evt.target.name]: value
+    });
   }
 
   submitHandler = e => {
     this.props.dispatch(addEntry(this.state))
-    e.preventDefault()
     this.setState({
       link: "",
       name: "",
       artist: "",
       category: ""
     })
+    e.preventDefault()
   }
   render() {
     return (
@@ -95,13 +94,15 @@ class Header extends React.Component {
         <HeaderWrapper>
           <TitleHeader>LISTEN LATER</TitleHeader>
         </HeaderWrapper>
-        <Form onSubmit={this.submitHandler}>
+        <Form>
           <div>
             <InputLink
               type="text"
               name="link"
               placeholder="add a link, then listen later"
-              onKeyUp={this.handleInputChange}
+              value={this.state.link}
+              onChange={e => this.setState({ link: e.target.value })}
+              required
             />
           </div>
           <div>
@@ -109,22 +110,27 @@ class Header extends React.Component {
               type="text"
               name="name"
               placeholder="name"
-              onKeyUp={this.handleInputChange}
+              value={this.state.name}
+              onChange={e => this.setState({ name: e.target.value })}
+              required
             />
             <Input
               type="text"
               name="artist"
               placeholder="artist"
-              onKeyUp={this.handleInputChange}
+              value={this.state.artist}
+              onChange={e => this.setState({ artist: e.target.value })}
+              required
             />
             <Input
               type="text"
               name="category"
               placeholder="tag"
-              onKeyUp={this.handleInputChange}
+              value={this.state.category}
+              onChange={e => this.setState({ category: e.target.value })}
               required
             />
-            <Submit type="submit" value="Submit" />
+            <Submit onClick={this.submitHandler}>Submit</Submit>
           </div>
         </Form>
       </>

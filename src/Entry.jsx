@@ -117,7 +117,7 @@ class Entry extends Component {
             <InputTag
               type="text"
               placeholder="add tag"
-              onKeyUp={(e) => this.enterHandler(e, this.props.id)}
+              onKeyUp={e => this.enterHandler(e, this.props.id)}
             />
           </TagContainer>
         </DateTags>
