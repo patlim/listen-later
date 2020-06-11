@@ -20,7 +20,7 @@ export const addCategoryToEntry = (category, entryId) => {
   return {
     type: ADD_ENTRY_CATEGORY,
     entryId,
-    category: '#' + category
+    category: category
   }
 }
 

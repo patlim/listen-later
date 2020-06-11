@@ -117,8 +117,6 @@ class Header extends React.Component {
         >
           <div
             role="presentation"
-            onClick={this.toggleDrawer(false)}
-            onKeyDown={this.toggleDrawer(false)}
           >
             <Form>
               <div>

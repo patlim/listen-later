@@ -10,9 +10,9 @@ const NavItem = (props) => {
   }
 
   if (props.selectedCategory === props.tag) {
-    return <ListGroup.Item variant="primary" onClick = { navHandler }>{props.tag}</ListGroup.Item>
+    return <ListGroup.Item style={{ border: 0 }} onClick = { navHandler }><b>{props.tag}</b></ListGroup.Item>
   } else {
-    return <ListGroup.Item onClick = { navHandler }>{props.tag}</ListGroup.Item>
+    return <ListGroup.Item style={{ border: 0 }} onClick = { navHandler }>{props.tag}</ListGroup.Item>
   }
 }
 

@@ -26,7 +26,7 @@ class EntryList extends Component {
 
   render() {
     let filteredEntryList = []
-    if (this.props.selectedCategory === "#all") {
+    if (this.props.selectedCategory === "all") {
       filteredEntryList = this.props.entryList
     } else {
       filteredEntryList = this.props.entryList.filter(entry => entry.categories.includes(this.props.selectedCategory))
