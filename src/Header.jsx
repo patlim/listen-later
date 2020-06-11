@@ -1,6 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 import styled from "styled-components"
+import { Button, Drawer } from "@material-ui/core"
 
 import { addEntry } from "./actions/entry"
 
@@ -28,7 +29,7 @@ const InputLink = styled.input`
   align-items: center;
   text-align: left;
   height: 25px;
-  width: 50%;
+  width: 100%;
   border-radius: 100px;
   background-color: lightgrey;
   border: 0;
@@ -59,7 +60,7 @@ const Submit = styled.button`
   background-color: lightgrey;
   border: 0;
   font-size: 15px;
-  margin: 10px 0 0 20px;
+  margin: 10px 0 0 10px;
 `
 
 class Header extends React.Component {
@@ -67,72 +68,100 @@ class Header extends React.Component {
     link: "",
     name: "",
     artist: "",
-    category: ""
+    category: "",
+    drawer: false,
   }
 
-  handleInputChange = evt => {
-    const value = evt.target.value;
+  toggleDrawer = (open) => (event) => {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return
+    }
+
+    this.setState({ drawer: open })
+  }
+
+  handleInputChange = (evt) => {
+    const value = evt.target.value
     this.setState({
       ...this.state,
-      [evt.target.name]: value
-    });
+      [evt.target.name]: value,
+    })
   }
 
-  submitHandler = e => {
+  submitHandler = (e) => {
     this.props.dispatch(addEntry(this.state))
     this.setState({
       link: "",
       name: "",
       artist: "",
-      category: ""
+      category: "",
     })
     e.preventDefault()
   }
+
   render() {
     return (
       <>
         <HeaderWrapper>
           <TitleHeader>LISTEN LATER</TitleHeader>
         </HeaderWrapper>
-        <Form>
-          <div>
-            <InputLink
-              type="text"
-              name="link"
-              placeholder="add a link, then listen later"
-              value={this.state.link}
-              onChange={e => this.setState({ link: e.target.value })}
-              required
-            />
+        <Button onClick={this.toggleDrawer(true)}>Add Link</Button>
+        <Drawer
+        width={5}
+          anchor="Drawer"
+          open={this.state.drawer}
+          onClose={this.toggleDrawer(false)}
+        >
+          <div
+            role="presentation"
+            onClick={this.toggleDrawer(false)}
+            onKeyDown={this.toggleDrawer(false)}
+          >
+            <Form>
+              <div>
+                <h1 style={{marginLeft: '10px'}}>Add Link</h1>
+                <InputLink
+                  type="text"
+                  name="link"
+                  placeholder="add a link, then listen later"
+                  value={this.state.link}
+                  onChange={(e) => this.setState({ link: e.target.value })}
+                  required
+                />
+              </div>
+              <div>
+                <Input
+                  type="text"
+                  name="name"
+                  placeholder="name"
+                  value={this.state.name}
+                  onChange={(e) => this.setState({ name: e.target.value })}
+                  required
+                />
+                <Input
+                  type="text"
+                  name="artist"
+                  placeholder="artist"
+                  value={this.state.artist}
+                  onChange={(e) => this.setState({ artist: e.target.value })}
+                  required
+                />
+                <Input
+                  type="text"
+                  name="category"
+                  placeholder="tag"
+                  value={this.state.category}
+                  onChange={(e) => this.setState({ category: e.target.value })}
+                  required
+                />
+                <Submit onClick={this.submitHandler}>Submit</Submit>
+              </div>
+            </Form>
           </div>
-          <div>
-            <Input
-              type="text"
-              name="name"
-              placeholder="name"
-              value={this.state.name}
-              onChange={e => this.setState({ name: e.target.value })}
-              required
-            />
-            <Input
-              type="text"
-              name="artist"
-              placeholder="artist"
-              value={this.state.artist}
-              onChange={e => this.setState({ artist: e.target.value })}
-              required
-            />
-            <Input
-              type="text"
-              name="category"
-              placeholder="tag"
-              value={this.state.category}
-              onChange={e => this.setState({ category: e.target.value })}
-              required
-            />
-            <Submit onClick={this.submitHandler}>Submit</Submit>
-          </div>
-        </Form>
+        </Drawer>
       </>
     )
   }

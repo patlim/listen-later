@@ -78,7 +78,6 @@ const IconContainer = styled.div`
   display: table;
   width: 10%;
   height: 100%;
-  background-color: #d7defb;
 `
 
 class Entry extends Component {
@@ -117,13 +116,16 @@ class Entry extends Component {
             <InputTag
               type="text"
               placeholder="add tag"
-              onKeyUp={e => this.enterHandler(e, this.props.id)}
+              onKeyUp={(e) => this.enterHandler(e, this.props.id)}
             />
           </TagContainer>
         </DateTags>
         <IconContainer>
           <IconLink href={this.props.link}>
-            <i className="far fa-play-circle fa-1x" />
+            <i
+              style={{ verticalAlign: "top" }}
+              class="fas fa-external-link-square-alt"
+            />
           </IconLink>
         </IconContainer>
       </>
