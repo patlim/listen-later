@@ -6,6 +6,13 @@ import styled from "styled-components"
 import { getCategories } from "./actions/category"
 import NavItem from "./NavItem"
 
+const TitleHeader = styled.header`
+  color: #000;
+  font-family: 'Avenir';
+  font-size: 45px;
+  font-style: oblique;
+  font-weight: 900;
+`
 const NavHeader = styled.p`
   font-weight: 700;
   padding: 15px;
@@ -20,16 +27,15 @@ class Nav extends Component {
 
   render() {
     return (
-      <ListGroup
-        style={{ maxWidth: "15%" }}
-        className="col"
-        variant="flush"
-      >
-        <NavHeader>Categories</NavHeader>
-        {this.props.taglist.map((t) => (
-          <NavItem key={t.id} tag={t.tag} />
-        ))}
-      </ListGroup>
+      <>
+        <ListGroup style={{ maxWidth: "15%" }} className="col" variant="flush">
+          <TitleHeader>LISTEN<br/>LATER</TitleHeader>
+          <NavHeader>Categories</NavHeader>
+          {this.props.taglist.map((t) => (
+            <NavItem key={t.id} tag={t.tag} />
+          ))}
+        </ListGroup>
+      </>
     )
   }
 }

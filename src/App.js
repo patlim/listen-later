@@ -2,15 +2,13 @@ import React from 'react';
 import { Route } from 'react-router-dom'
 import './App.css';
 
-import Header from './Header'
+import LinkDrawer from './LinkDrawer'
 import Nav from './Nav'
 import EntryList from './EntryList';
 function App() {
   return (
     <>
-      <div className="row">
-        <Header />
-      </div>
+      <LinkDrawer />
       <div style={{ margin: '1em' }} className="row">
         <Route path="/" component={Nav} />
         <EntryList />

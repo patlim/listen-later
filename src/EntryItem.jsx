@@ -80,7 +80,7 @@ const IconContainer = styled.div`
   height: 100%;
 `
 
-class Entry extends Component {
+class EntryItem extends Component {
   state = {
     newTag: "",
   }
@@ -133,4 +133,4 @@ class Entry extends Component {
   }
 }
 
-export default connect()(Entry)
+export default connect()(EntryItem)

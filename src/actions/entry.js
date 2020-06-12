@@ -48,7 +48,7 @@ export const addEntry = ({ link, category, artist, name }) => {
         "https://redi.eu/wp-content/uploads/2015/08/not-available-300x217.png",
       source: "work in progress",
       date: getDate(),
-      categories: ['#'+ category],
+      categories: [category],
       link: link
     }
   }

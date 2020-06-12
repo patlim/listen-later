@@ -3,7 +3,8 @@ import { connect } from "react-redux"
 import styled from "styled-components"
 
 import { getEntries } from "./actions/entry"
-import Entry from "./Entry"
+import EntryItem from "./EntryItem"
+import { triggerDrawer } from "./actions/linkDrawer"
 
 const EntryListContainer = styled.table`
   float: right;
@@ -37,6 +38,7 @@ class EntryList extends Component {
           <tr>
             <EntryListHeader>{this.props.selectedCategory}</EntryListHeader>
             <EntryListHeader>Date Added</EntryListHeader>
+            {/* <button onClick={() => this.props.dispatch(triggerDrawer(true))}>Add Link</button> */}
           </tr>
         </thead>
         <tbody>
@@ -44,7 +46,7 @@ class EntryList extends Component {
             ? <tr>No entries in this category</tr>
             : filteredEntryList.map((entry) => (
               <EntryRow key={entry.id}>
-                <Entry
+                <EntryItem
                   id={entry.id}
                   img={entry.img}
                   name={entry.name}
