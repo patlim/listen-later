@@ -32,7 +32,7 @@ const Input = styled.input`
   align-items: center;
   text-align: center;
   height: 25px;
-  width: 100px;
+  width: 25%;
   border-radius: 100px;
   background-color: lightgrey;
   border: 0;
@@ -51,6 +51,10 @@ const Submit = styled.button`
   font-size: 15px;
   margin: 10px 0 0 10px;
 `
+const Error = styled.p`
+  margin-left: 10px;
+  color: red;
+`
 
 class LinkDrawer extends React.Component {
   state = {
@@ -58,6 +62,7 @@ class LinkDrawer extends React.Component {
     name: "",
     artist: "",
     category: "",
+    error: "",
   }
 
   toggleDrawer = (open) => (event) => {
@@ -79,15 +84,22 @@ class LinkDrawer extends React.Component {
   }
 
   submitHandler = (e) => {
-    this.props.dispatch(addEntry(this.state))
-    this.setState({
-      link: "",
-      name: "",
-      artist: "",
-      category: "",
-    })
-    e.preventDefault()
-    this.props.dispatch(triggerDrawer(false))
+    const { link, name, artist, category } = this.state
+    if (link === "" || name === "" || artist === "" || category === "") {
+      e.preventDefault()
+      this.setState({ error: "Please fill out all fields" })
+    } else {
+      this.props.dispatch(addEntry(this.state))
+      this.setState({
+        link: "",
+        name: "",
+        artist: "",
+        category: "",
+        error: "",
+      })
+      e.preventDefault()
+      this.props.dispatch(triggerDrawer(false))
+    }
   }
 
   render() {
@@ -104,7 +116,6 @@ class LinkDrawer extends React.Component {
                 placeholder="add a link, then listen later"
                 value={this.state.link}
                 onChange={(e) => this.setState({ link: e.target.value })}
-                required
               />
             </div>
             <div>
@@ -114,7 +125,6 @@ class LinkDrawer extends React.Component {
                 placeholder="name"
                 value={this.state.name}
                 onChange={(e) => this.setState({ name: e.target.value })}
-                required
               />
               <Input
                 type="text"
@@ -122,7 +132,6 @@ class LinkDrawer extends React.Component {
                 placeholder="artist"
                 value={this.state.artist}
                 onChange={(e) => this.setState({ artist: e.target.value })}
-                required
               />
               <Input
                 type="text"
@@ -130,9 +139,9 @@ class LinkDrawer extends React.Component {
                 placeholder="tag"
                 value={this.state.category}
                 onChange={(e) => this.setState({ category: e.target.value })}
-                required
               />
               <Submit onClick={this.submitHandler}>Submit</Submit>
+              <Error>{this.state.error}</Error>
             </div>
           </Form>
         </div>

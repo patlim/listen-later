@@ -28,7 +28,7 @@ const LinkButton = styled.button`
   height: 25px;
   min-width: 100px;
   border-radius: 100px;
-  background-color: #2661d4;
+  background-color: #047AFB;
   margin: 0;
   padding: 0;
   border: none;
