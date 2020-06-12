@@ -10,7 +10,7 @@ const initialState = [
     source: "Youtube",
     date: "25/04/20",
     categories: ["Electronic","Downtempo","Rock"],
-    link: "/"
+    link: "https://www.youtube.com/watch?v=PAAUqBghiVo"
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ const initialState = [
     source: "Soundcloud",
     date: "24/04/20",
     categories: ["House"],
-    link: "/"
+    link: "https://soundcloud.com/mood-hut/mh020-local-artist-dancer-dreamer"
   },
   {
     id: 3,
@@ -32,7 +32,7 @@ const initialState = [
     source: "Bandcamp",
     date: "24/04/20",
     categories: ["House","Disco"],
-    link: "/"
+    link: "https://scruscru.bandcamp.com/album/teuf-de-ouf-ep"
   },
   {
     id: 4,
@@ -43,7 +43,7 @@ const initialState = [
     source: "Spotify",
     date: "22/04/20",
     categories: ["Hiphop"],
-    link: "/"
+    link: "https://open.spotify.com/track/48l2LScbUIm7ybfe0Q0KqQ?si=_f9BqlR4TXyd-4rRX4Vz-Q"
   },
   {
     id: 5,
@@ -54,16 +54,17 @@ const initialState = [
     source: "Youtube",
     date: "02/05/20",
     categories: ["Jazz", "Alternative", "Indie"],
-    link: "/"
+    link: "https://www.youtube.com/watch?v=a7hNEbdcHjE"
   },
   {
     id: 6,
-    name: "CRUMPY",
+    name: "QADIR",
     artist: "Nick Hakim",
     img: "https://media.pitchfork.com/photos/5ebbfc2b8b87698b3b0b9fc6/1:1/w_320/WILL%20THIS%20MAKE%20ME%20GOOD_Nick%20Hakim.jpg",
     source: "Youtube",
     date: "17/05/20",
-    categories: ['Rnb', 'Rock']
+    categories: ['Rnb', 'Rock'],
+    link: 'https://www.youtube.com/watch?v=PqzFi6PwTGA'
   },
   {
     id: 7,
@@ -72,7 +73,8 @@ const initialState = [
     img: "https://img.discogs.com/XMfQWFJYhLVKG0Y0OPuqgVKesII=/fit-in/300x300/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-589418-1221533706.jpeg.jpg",
     source: "Spotify",
     date: "21/05/20",
-    categories: ['Rnb', 'Soul']
+    categories: ['Rnb', 'Soul'],
+    link: 'https://open.spotify.com/track/7BgUcOjSOlKJXASLgJ6bx1?si=lkMsa8Q8RICO54IXusBOmg'
   }
 ]
 
