@@ -95,7 +95,7 @@ class EntryList extends Component {
                     source={entry.source}
                     date={entry.date}
                     categories={entry.categories}
-                    linke={entry.link}
+                    link={entry.link}
                   />
                 </EntryRow>
               ))
