@@ -19,6 +19,7 @@ const EntryListHeader = styled.th`
 const ButtonHeader = styled.th`
   border-bottom: 0.5px solid lightgray;
   text-align: "right";
+  width: 5vh;
 `
 const EntryRow = styled.tr`
   height: 100px;
@@ -63,7 +64,7 @@ class EntryList extends Component {
             <tr>
               <EntryListHeader style={{ width: '30vw' }}>{this.props.selectedCategory}</EntryListHeader>
               <EntryListHeader style={{ width: '45vw'}}>Date Added</EntryListHeader>
-              <ButtonHeader style={{ width: '5vw' }}>
+              <ButtonHeader>
                 <LinkButton
                   onClick={() => this.props.dispatch(triggerDrawer(true))}
                 >
