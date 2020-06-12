@@ -20,8 +20,11 @@ const categoryReducer = (state = initialState, action) => {
   switch (action.type) {
     case actions.REC_CATEGORIES:
       return {...state}
-    case actions.ADD_CATEGORY: // this should only be if the category isn't in the list
-      return {...state, taglist: [...state.taglist, { id: state.length(), category: action.category }]}
+    case actions.ADD_CATEGORY:
+      if (state.taglist.filter(item => item.tag === action.category).length === 0) {
+        return {...state, taglist: [...state.taglist, { id: state.length(), category: action.category }]}
+      }
+      else return {...state}
     case actions.SELECT_CATEGORY:
       return {...state, selectedCategory: action.selectedCategory}
     default:

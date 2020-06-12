@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 import styled from "styled-components"
 import { Drawer } from "@material-ui/core"
 
-import { addEntry } from "./actions/entry"
+import { addEntryAndCategory, addEntry } from "./actions/entry"
 import { triggerDrawer } from "./actions/linkDrawer"
 
 const Form = styled.form`
