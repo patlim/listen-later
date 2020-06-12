@@ -109,7 +109,7 @@ class EntryList extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    entryList: state.entries,
+    entryList: [].concat(state.entries).reverse(),
     selectedCategory: state.categories.selectedCategory,
   }
 }
