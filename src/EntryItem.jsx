@@ -12,7 +12,14 @@ const Details = styled.td`
   height: 100%;
 `
 const DateTags = styled.td`
-  width: 60%;
+  width: 45%;
+  border-bottom: 0.5px solid lightgray;
+  padding: 15px;
+  height: 100%;
+`
+const IconContainer = styled.td`
+  position: relative;
+  width: 5%;
   border-bottom: 0.5px solid lightgray;
   padding: 15px;
   height: 100%;
@@ -68,16 +75,14 @@ const InputTag = styled.input`
   font-size: 15px;
 `
 const IconLink = styled.a`
+  position: absolute;
+  top: 1px;
+  right: 1px;
   border-bottom: 2px solid white;
   display: table-cell;
   vertical-align: middle;
   text-align: center;
   padding: 0 5px 0 5px;
-`
-const IconContainer = styled.div`
-  display: table;
-  width: 10%;
-  height: 100%;
 `
 
 class EntryItem extends Component {
@@ -123,7 +128,6 @@ class EntryItem extends Component {
         <IconContainer>
           <IconLink href={this.props.link}>
             <i
-              style={{ verticalAlign: "top" }}
               class="fas fa-external-link-square-alt"
             />
           </IconLink>

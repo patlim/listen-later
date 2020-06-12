@@ -19,6 +19,24 @@ const EntryListHeader = styled.th`
 const EntryRow = styled.tr`
   height: 100px;
 `
+const LinkButton = styled.button`
+  height: 25px;
+  min-width: 100px;
+  border-radius: 100px;
+  background-color: #2661d4;
+  margin: 0;
+  padding: 0;
+  border: none;
+`
+const ButtonText = styled.span`
+  display: inline-block;
+  color: white;
+  font-family: Helvetica;
+  font-size: 15px;
+  text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+`
 
 class EntryList extends Component {
   componentDidMount() {
@@ -30,45 +48,56 @@ class EntryList extends Component {
     if (this.props.selectedCategory === "all") {
       filteredEntryList = this.props.entryList
     } else {
-      filteredEntryList = this.props.entryList.filter(entry => entry.categories.includes(this.props.selectedCategory))
+      filteredEntryList = this.props.entryList.filter((entry) =>
+        entry.categories.includes(this.props.selectedCategory)
+      )
     }
-      return (
-      <EntryListContainer className="col">
-        <thead>
-          <tr>
-            <EntryListHeader>{this.props.selectedCategory}</EntryListHeader>
-            <EntryListHeader>Date Added</EntryListHeader>
-            {/* <button onClick={() => this.props.dispatch(triggerDrawer(true))}>Add Link</button> */}
-          </tr>
-        </thead>
-        <tbody>
-          { (filteredEntryList.length === 0)
-            ? <tr>No entries in this category</tr>
-            : filteredEntryList.map((entry) => (
-              <EntryRow key={entry.id}>
-                <EntryItem
-                  id={entry.id}
-                  img={entry.img}
-                  name={entry.name}
-                  artist={entry.artist}
-                  source={entry.source}
-                  date={entry.date}
-                  categories={entry.categories}
-                  linke={entry.link}
-                />
-              </EntryRow>
-            ))
-          }
-        </tbody>
-      </EntryListContainer>
+    return (
+      <>
+        <EntryListContainer className="col">
+          <thead>
+            <tr>
+              <EntryListHeader>{this.props.selectedCategory}</EntryListHeader>
+              <EntryListHeader>Date Added</EntryListHeader>
+              <EntryListHeader>
+                <LinkButton
+                  onClick={() => this.props.dispatch(triggerDrawer(true))}
+                >
+                  <ButtonText>+ Add Link</ButtonText>
+                </LinkButton>
+              </EntryListHeader>
+            </tr>
+          </thead>
+          <tbody style={{ overflow: 'auto' }}>
+            {filteredEntryList.length === 0 ? (
+              <tr>No entries in this category</tr>
+            ) : (
+              filteredEntryList.map((entry) => (
+                <EntryRow key={entry.id}>
+                  <EntryItem
+                    id={entry.id}
+                    img={entry.img}
+                    name={entry.name}
+                    artist={entry.artist}
+                    source={entry.source}
+                    date={entry.date}
+                    categories={entry.categories}
+                    linke={entry.link}
+                  />
+                </EntryRow>
+              ))
+            )}
+          </tbody>
+        </EntryListContainer>
+      </>
     )
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     entryList: state.entries,
-    selectedCategory: state.categories.selectedCategory
+    selectedCategory: state.categories.selectedCategory,
   }
 }
 

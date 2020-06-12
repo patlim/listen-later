@@ -1,7 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 import styled from "styled-components"
-import { Button, Drawer } from "@material-ui/core"
+import { Drawer } from "@material-ui/core"
 
 import { addEntry } from "./actions/entry"
 import { triggerDrawer } from "./actions/linkDrawer"
