@@ -81,9 +81,7 @@ const entryReducer = (state = initialState, action) => {
     case actions.REC_ENTRIES:
       return [...state]
     case actions.ADD_ENTRY:
-      state.push({ id: state.length + 1, ...action.entry })
-      const newstate = state
-      return newstate
+      return [...state, {id: state.length + 1, ...action.entry}]
     case actions.ADD_ENTRY_CATEGORY:
       return state.map(entry => {
         return entry.id === action.entryId

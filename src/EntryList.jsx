@@ -78,7 +78,7 @@ class EntryList extends Component {
               display: "block",
               overflow: "hidden",
               overflowY: "auto",
-              height: '100vh',
+              height: '88vh',
               width: '100%'
             }}
           >
