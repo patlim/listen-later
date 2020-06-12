@@ -12,6 +12,7 @@ const TitleHeader = styled.header`
   font-size: 45px;
   font-style: oblique;
   font-weight: 900;
+  line-height: 1;
 `
 
 class Nav extends Component {

@@ -1,7 +1,7 @@
 import * as actions from "../actions/category"
 
 const initialState = {
-  selectedCategory: 'all',
+  selectedCategory: 'All',
   taglist: [
   { id: 0, tag: "All" },
   { id: 1, tag: "Electronic" },
