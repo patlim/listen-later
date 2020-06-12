@@ -3,17 +3,17 @@ import * as actions from "../actions/category"
 const initialState = {
   selectedCategory: 'all',
   taglist: [
-  { id: 0, tag: "all" },
-  { id: 1, tag: "electronic" },
-  { id: 2, tag: "downtempo" },
-  { id: 3, tag: "rock" },
-  { id: 4, tag: "house" },
-  { id: 5, tag: "disco" },
-  { id: 6, tag: "hiphop" },
-  { id: 7, tag: "jazz" },
-  { id: 8, tag: "alternative" },
-  { id: 9, tag: "indie" },
-  { id: 10, tag: "soul" }
+  { id: 0, tag: "All" },
+  { id: 1, tag: "Electronic" },
+  { id: 2, tag: "Downtempo" },
+  { id: 3, tag: "Rock" },
+  { id: 4, tag: "House" },
+  { id: 5, tag: "Disco" },
+  { id: 6, tag: "Hiphop" },
+  { id: 7, tag: "Jazz" },
+  { id: 8, tag: "Alternative" },
+  { id: 9, tag: "Indie" },
+  { id: 10, tag: "Soul" }
 ]}
 
 const categoryReducer = (state = initialState, action) => {

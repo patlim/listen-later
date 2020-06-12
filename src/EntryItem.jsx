@@ -6,20 +6,20 @@ import { addCategoryToEntry } from "./actions/entry"
 import Tag from "./Tag"
 
 const Details = styled.td`
-  width: 30%;
+  width: 30vw;
   border-bottom: 0.5px solid lightgray;
   padding: 15px;
   height: 100%;
 `
 const DateTags = styled.td`
-  width: 45%;
+  width: 45vw;
   border-bottom: 0.5px solid lightgray;
   padding: 15px;
   height: 100%;
 `
 const IconContainer = styled.td`
   position: relative;
-  width: 5%;
+  width: 5vw;
   border-bottom: 0.5px solid lightgray;
   padding: 15px;
   height: 100%;

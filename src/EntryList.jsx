@@ -13,8 +13,12 @@ const EntryListContainer = styled.table`
 `
 const EntryListHeader = styled.th`
   border-bottom: 0.5px solid lightgray;
-  padding: 15px;
+  padding: 15px 15px 5px 15px;
   text-align: "left";
+`
+const ButtonHeader = styled.th`
+  border-bottom: 0.5px solid lightgray;
+  text-align: "right";
 `
 const EntryRow = styled.tr`
   height: 100px;
@@ -45,7 +49,7 @@ class EntryList extends Component {
 
   render() {
     let filteredEntryList = []
-    if (this.props.selectedCategory === "all") {
+    if (this.props.selectedCategory === "All") {
       filteredEntryList = this.props.entryList
     } else {
       filteredEntryList = this.props.entryList.filter((entry) =>
@@ -55,20 +59,28 @@ class EntryList extends Component {
     return (
       <>
         <EntryListContainer className="col">
-          <thead>
+          <thead style={{ display: "block", width: '100%' }}>
             <tr>
-              <EntryListHeader>{this.props.selectedCategory}</EntryListHeader>
-              <EntryListHeader>Date Added</EntryListHeader>
-              <EntryListHeader>
+              <EntryListHeader style={{ width: '30vw' }}>{this.props.selectedCategory}</EntryListHeader>
+              <EntryListHeader style={{ width: '45vw'}}>Date Added</EntryListHeader>
+              <ButtonHeader style={{ width: '5vw' }}>
                 <LinkButton
                   onClick={() => this.props.dispatch(triggerDrawer(true))}
                 >
                   <ButtonText>+ Add Link</ButtonText>
                 </LinkButton>
-              </EntryListHeader>
+              </ButtonHeader>
             </tr>
           </thead>
-          <tbody style={{ overflow: 'auto' }}>
+          <tbody
+            style={{
+              display: "block",
+              overflow: "hidden",
+              overflowY: "auto",
+              height: '100vh',
+              width: '100%'
+            }}
+          >
             {filteredEntryList.length === 0 ? (
               <tr>No entries in this category</tr>
             ) : (
