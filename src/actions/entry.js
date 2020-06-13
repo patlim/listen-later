@@ -3,6 +3,7 @@ import { addCategory } from "./category"
 export const ADD_ENTRY = "ADD_ENTRY"
 export const REQ_ENTRIES = "REQ_ENTRIES"
 export const REC_ENTRIES = "REC_ENTRIES"
+export const DEL_ENTRY = "DEL_ENTRY"
 export const ADD_ENTRY_CATEGORY = "ADD_ENTRY_CATEGORY"
 
 export const requestEntries = () => {
@@ -14,6 +15,13 @@ export const requestEntries = () => {
 export const receiveEntries = () => {
   return {
     type: REC_ENTRIES,
+  }
+}
+
+export const deleteEntry = id => {
+  return {
+    type: DEL_ENTRY,
+    id
   }
 }
 

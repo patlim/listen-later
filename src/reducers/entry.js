@@ -90,6 +90,8 @@ const entryReducer = (state = initialState, action) => {
           ? {...entry, categories: [...entry.categories, action.category]}
           : entry
       })
+    case actions.DEL_ENTRY:
+      return state.filter(entry => entry.id !== action.id)
     default:
       return state
   }

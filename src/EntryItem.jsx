@@ -4,6 +4,7 @@ import { connect } from "react-redux"
 
 import { addCategoryToEntry } from "./actions/entry"
 import Tag from "./Tag"
+import { deleteEntry } from './actions/entry'
 
 const Details = styled.td`
   width: 30vw;
@@ -74,7 +75,7 @@ const InputTag = styled.input`
   border: 0;
   font-size: 15px;
 `
-const IconLink = styled.a`
+const IconLink = styled.div`
   position: absolute;
   top: 1px;
   right: 1px;
@@ -127,9 +128,11 @@ class EntryItem extends Component {
           </TagContainer>
         </DateTags>
         <IconContainer>
-          <IconLink href={this.props.link} target="_blank">
-            <i class="fas fa-external-link-square-alt" />
+          <IconLink>
+            <a href={this.props.link} target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-square-alt" /></a>
+            <i onClick={() => this.props.dispatch(deleteEntry(this.props.id))} style={{ paddingLeft: 5 }} class="fas fa-times" />
           </IconLink>
+          
         </IconContainer>
       </>
     )
