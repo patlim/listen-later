@@ -74,15 +74,17 @@ const InputTag = styled.input`
   border: 0;
   font-size: 15px;
 `
-const IconLink = styled.a`position: absolute;
-top: 1px;
-right: 1px;
-border-bottom: 2px solid white;
-display: table-cell;
-vertical-align: middle;
-text-align: center;
-padding: 0 5px 0 5px;
-border: none;`
+const IconLink = styled.a`
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  border-bottom: 2px solid white;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  padding: 0 5px 0 5px;
+  border: none;
+`
 
 class EntryItem extends Component {
   state = {
