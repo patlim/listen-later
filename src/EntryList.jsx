@@ -14,7 +14,7 @@ const EntryListContainer = styled.table`
 const EntryListHeader = styled.th`
   border-bottom: 0.5px solid lightgray;
   padding: 15px 15px 5px 15px;
-  text-align: "left";
+  text-align: left;
 `
 const ButtonHeader = styled.th`
   border-bottom: 0.5px solid lightgray;
@@ -28,7 +28,7 @@ const LinkButton = styled.button`
   height: 25px;
   min-width: 100px;
   border-radius: 100px;
-  background-color: #047AFB;
+  background-color: #047afb;
   margin: 0;
   padding: 0;
   border: none;
@@ -48,6 +48,10 @@ class EntryList extends Component {
     this.props.dispatch(getEntries())
   }
 
+  sortByDate = () => {
+    this.setState({ entryList: this.props.entryList.reverse()})
+  }
+
   render() {
     let filteredEntryList = []
     if (this.props.selectedCategory === "All") {
@@ -60,10 +64,15 @@ class EntryList extends Component {
     return (
       <>
         <EntryListContainer className="col">
-          <thead style={{ display: "block", width: '100%' }}>
+          <thead style={{ display: "block", width: "100%" }}>
             <tr>
-              <EntryListHeader style={{ width: '30vw' }}>{this.props.selectedCategory}</EntryListHeader>
-              <EntryListHeader style={{ width: '45vw'}}>Date Added</EntryListHeader>
+              <EntryListHeader style={{ width: "30vw" }}>
+                {this.props.selectedCategory}
+              </EntryListHeader>
+              <EntryListHeader style={{ width: "45vw" }} onClick={() => this.sortByDate()}>
+                Date Added 
+                <i style={{ paddingLeft: 5 }} class="fas fa-sort" />
+              </EntryListHeader>
               <ButtonHeader>
                 <LinkButton
                   onClick={() => this.props.dispatch(triggerDrawer(true))}
@@ -78,8 +87,8 @@ class EntryList extends Component {
               display: "block",
               overflow: "hidden",
               overflowY: "auto",
-              height: '88vh',
-              width: '100%'
+              height: "88vh",
+              width: "100%",
             }}
           >
             {filteredEntryList.length === 0 ? (
